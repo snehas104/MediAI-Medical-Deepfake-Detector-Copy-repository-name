@@ -1,0 +1,470 @@
+
+/* MediAI Premium Medical Glass Homepage */
+
+.medi-home {
+  min-height: 100vh;
+  color: #eef8ff;
+  font-family: "Segoe UI", Arial, sans-serif;
+
+  
+background:
+  linear-gradient(
+    115deg,
+    rgba(5, 19, 42, 0.25),
+    rgba(7, 39, 69, 0.15),
+    rgba(13, 67, 99, 0.08)
+  ),
+  url("/13.jpeg");
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
+}
+
+.medi-home * {
+  box-sizing: border-box;
+}
+
+.medi-home a {
+  text-decoration: none;
+}
+
+/* Navigation */
+
+.medi-nav {
+  min-height: 80px;
+  padding: 18px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: rgba(3, 20, 43, 0.92);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(18px);
+}
+
+
+.medi-brand {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.medi-brand-icon {
+  color: #00c8ff;
+  margin-right: 9px;
+  font-size: 30px;
+}
+
+
+.medi-nav-links a {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.medi-nav-links a {
+  color: #e0efff;
+  font-size: 14px;
+}
+
+.medi-nav-links a:hover {
+  color: #83e3ff;
+}
+
+.medi-nav-links .medi-register-link {
+  padding: 12px 19px;
+  color: #062540;
+  background: #8be2ff;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+/* Hero section */
+.medi-hero {
+  width: 86%;
+  max-width: 1250px;
+  min-height: 600px;
+  margin: auto;
+  padding: 75px 0;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 50px;
+}
+
+.medi-eyebrow {
+  color: #8ce4ff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.medi-hero h1 {
+  margin: 24px 0;
+  color: #ffffff;
+  font-size: clamp(38px, 4.5vw, 64px);
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+}
+
+.medi-hero h1 span {
+  display: block;
+  color: #8be2ff;
+}
+
+.medi-hero-content > p {
+  max-width: 530px;
+  color: #d5e6f6;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.medi-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.medi-primary-btn,
+.medi-secondary-btn {
+  min-height: 48px;
+  padding: 14px 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: 0.25s ease;
+}
+
+.medi-primary-btn {
+  color: #062540;
+  background: linear-gradient(120deg, #a3ecff, #66caff);
+  box-shadow: 0 8px 25px rgba(54, 184, 255, 0.2);
+}
+
+.medi-primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(54, 184, 255, 0.35);
+}
+
+.medi-secondary-btn {
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.medi-trust-note {
+  margin-top: 27px;
+  color: #c4d9eb;
+  font-size: 12px;
+}
+
+/* Glass scan panel */
+.medi-hero-visual {
+  position: relative;
+  padding: 12px;
+}
+
+.medi-image-card {
+  min-height: 390px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  background: rgba(222, 243, 255, 0.12);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(20px);
+}
+
+.medi-image-label,
+.medi-image-bottom {
+  padding: 20px 23px;
+  display: flex;
+  justify-content: space-between;
+  color: #e4f7ff;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+.medi-status-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #70f1c9;
+}
+
+.medi-scan-placeholder {
+  min-height: 270px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    ellipse,
+    rgba(69, 180, 233, 0.25),
+    transparent 70%
+  );
+}
+
+.medi-scan-ring {
+  width: 150px;
+  height: 150px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(126, 224, 255, 0.7);
+  border-radius: 50%;
+  box-shadow: 0 0 0 14px rgba(112, 210, 255, 0.06);
+}
+
+.medi-scan-ring span {
+  color: #9beaff;
+  font-size: 70px;
+}
+
+.medi-scan-placeholder p {
+  color: #ffffff;
+  font-weight: 650;
+  margin: 23px 0 5px;
+}
+
+.medi-scan-placeholder small {
+  color: #b9dced;
+  letter-spacing: 3px;
+  font-size: 10px;
+}
+
+.medi-image-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.medi-floating-chip {
+  position: absolute;
+  right: 0;
+  bottom: 35px;
+  padding: 15px 18px;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  background: rgba(27, 92, 132, 0.8);
+  backdrop-filter: blur(20px);
+  font-size: 12px;
+}
+
+/* Features */
+.medi-features {
+  padding: 75px 7%;
+  background: rgba(4, 18, 39, 0.65);
+  backdrop-filter: blur(10px);
+}
+
+.medi-section-heading {
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.medi-section-heading > span,
+.medi-about > span {
+  color: #8ce4ff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.medi-section-heading h2,
+.medi-about h2 {
+  color: #ffffff;
+  font-size: clamp(26px, 3vw, 38px);
+}
+
+.medi-feature-grid {
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.medi-feature-card {
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  background: rgba(223, 242, 255, 0.1);
+  backdrop-filter: blur(18px);
+  transition: 0.25s ease;
+}
+
+.medi-feature-card:hover {
+  transform: translateY(-5px);
+  background: rgba(223, 242, 255, 0.16);
+}
+
+.medi-feature-icon {
+  color: #8ce4ff;
+  font-size: 32px;
+}
+
+.medi-feature-card h3 {
+  color: #ffffff;
+  margin: 20px 0 10px;
+}
+
+.medi-feature-card p,
+.medi-about p {
+  color: #d0e2f1;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* About section and footer */
+.medi-about {
+  padding: 75px 20px;
+  text-align: center;
+  background: rgba(7, 32, 58, 0.65);
+}
+
+.medi-about p {
+  max-width: 650px;
+  margin: 0 auto 25px;
+}
+
+.medi-footer {
+  padding: 25px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: rgba(3, 15, 32, 0.8);
+}
+
+.medi-footer p {
+  color: #b9cfe1;
+  font-size: 12px;
+}
+
+/* Mobile layout */
+@media (max-width: 800px) {
+  .medi-nav {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .medi-nav-links {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .medi-hero {
+    grid-template-columns: 1fr;
+    padding: 55px 0;
+    gap: 30px;
+  }
+
+  .medi-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .medi-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+
+
+/* Improve homepage text visibility and readability */
+
+.medi-home {
+  color: #ffffff;
+}
+
+.medi-home p,
+.medi-home small,
+.medi-home span,
+.medi-home h1,
+.medi-home h2,
+.medi-home h3,
+.medi-home a {
+  opacity: 1;
+}
+
+.medi-eyebrow {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.medi-hero-content h1 {
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+.medi-hero-content p {
+  font-size: 19px;
+  line-height: 1.8;
+  color: #ffffff;
+  max-width: 650px;
+}
+
+.medi-nav-links a {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.medi-trust-note {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.medi-image-label,
+.medi-image-bottom {
+  font-size: 15px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.medi-scan-placeholder p {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.medi-scan-placeholder small {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.medi-section-heading > span,
+.medi-about > span {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.medi-feature-card h3,
+.medi-about h2,
+.medi-section-heading h2 {
+  color: #ffffff;
+}
+
+.medi-feature-card p,
+.medi-about p,
+.medi-footer p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #ffffff;
+}
+
+.medi-hero-content,
+.medi-hero-visual,
+.medi-feature-card,
+.medi-about,
+.medi-footer {
+  position: relative;
+  z-index: 1;
+}
