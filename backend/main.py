@@ -8,6 +8,7 @@ import shutil
 import os
 
 from yolo_service import MedicalYOLOService
+from cnn_service import predict_cnn
 
 
 # Create FastAPI application
@@ -72,29 +73,26 @@ def home():
 # Analyze image
 # =========================
 
+
 @app.post("/analyze")
 async def analyze_image(file: UploadFile = File(...)):
+    # Read the uploaded image once
+    contents = await file.read()
 
-    # Create path for uploaded image
-    file_path = os.path.join(
-        UPLOAD_FOLDER,
-        file.filename
-    )
-
-    # Save uploaded image
+    # Save the image for YOLO detection
+    file_path = os.path.join(UPLOAD_FOLDER, file.filename)
     with open(file_path, "wb") as buffer:
+        buffer.write(contents)
 
-        shutil.copyfileobj(
-            file.file,
-            buffer
-        )
+    # Member 1: CNN classification (Real or Fake)
+    cnn_result = predict_cnn(contents)
 
-    # Analyze image using YOLO
-    result = detector.analyze_scan(file_path)
+    # Existing Member 2: YOLO suspicious-region detection
+    yolo_result = detector.analyze_scan(file_path)
 
-    return JSONResponse(
-        content={
-            "filename": file.filename,
-            "result": result
-        }
-    )
+    # Return both results to the frontend
+    return JSONResponse(content={
+        "filename": file.filename,
+        "result": yolo_result,
+        "cnn_result": cnn_result
+    })

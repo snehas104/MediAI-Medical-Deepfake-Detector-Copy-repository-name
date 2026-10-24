@@ -74,6 +74,7 @@ export default function Detector() {
       );
 
       const data = await response.json();
+      console.log("Analysis API response:", data);
 
       if (!response.ok) {
         throw new Error(
@@ -81,12 +82,13 @@ export default function Detector() {
         );
       }
 
-      navigate("/results", {
-        state: {
-          result: data.result,
-          fileName: file.name,
-        },
-      });
+     navigate("/results", {
+  state: {
+    result: data.result,
+    cnn_result: data.cnn_result,
+    fileName: file.name,
+  },
+});
     } catch (err) {
       setError(
         err.message ||
