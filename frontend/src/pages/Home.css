@@ -1,470 +1,592 @@
 
-/* MediAI Premium Medical Glass Homepage */
+/* =========================================
+   MediAI Homepage
+   ========================================= */
+
 
 .medi-home {
   min-height: 100vh;
-  color: #eef8ff;
-  font-family: "Segoe UI", Arial, sans-serif;
-
-  
-background:
-  linear-gradient(
-    115deg,
-    rgba(5, 19, 42, 0.25),
-    rgba(7, 39, 69, 0.15),
-    rgba(13, 67, 99, 0.08)
-  ),
-  url("/13.jpeg");
-background-size: cover;
-background-position: center;
-background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+  color: #173c43;
+  font-family: "Inter", sans-serif;
+  background: #edf7f8;
 }
 
-.medi-home * {
-  box-sizing: border-box;
-}
-
-.medi-home a {
-  text-decoration: none;
-}
 
 /* Navigation */
-
 .medi-nav {
-  min-height: 80px;
-  padding: 18px 7%;
+  min-height: 65px;
+  padding: 12px 5%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  background: rgba(3, 20, 43, 0.92);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(18px);
+  align-items: center;
+  gap: 24px;
+  background: rgba(220, 244, 237, 0.92);
+  border-bottom: 1px solid #d3e9e2;
+  position: relative;
+  z-index: 5;
 }
 
-
 .medi-brand {
-  color: #ffffff;
-  font-size: 28px;
-  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #123b43;
   text-decoration: none;
 }
 
 .medi-brand-icon {
-  color: #00c8ff;
-  margin-right: 9px;
-  font-size: 30px;
-}
-
-
-.medi-nav-links a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #087f82;
   color: #ffffff;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 1.8rem;
 }
 
-.medi-nav-links a {
-  color: #e0efff;
-  font-size: 14px;
+.medi-brand strong {
+  display: block;
+  font-size: 1.35rem;
 }
 
-.medi-nav-links a:hover {
-  color: #83e3ff;
+.medi-brand strong span {
+  color: #087f82;
 }
 
-.medi-nav-links .medi-register-link {
-  padding: 12px 19px;
-  color: #062540;
-  background: #8be2ff;
-  border-radius: 10px;
+.medi-brand small {
+  display: block;
+  margin-top: 3px;
+  color: #60777b;
+  font-size: 0.62rem;
+  letter-spacing: 1px;
+}
+
+.medi-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.medi-nav a {
+  color: #244b4d;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.medi-nav-links a:hover,
+.medi-nav-links .medi-nav-active {
+  color: #087f82;
   font-weight: 700;
 }
 
-/* Hero section */
+.medi-login {
+  padding: 10px 18px;
+  border: 1px solid #087f82;
+  border-radius: 8px;
+  color: #087f82 !important;
+  font-weight: 700;
+}
+
+.medi-login:hover {
+  background: #d9f3e9;
+}
+
+/* Hero section and medical scan background */
 .medi-hero {
-  width: 86%;
-  max-width: 1250px;
-  min-height: 600px;
-  margin: auto;
-  padding: 75px 0;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  min-height: 570px;
+  padding: 70px 9%;
+  display: flex;
   align-items: center;
-  gap: 50px;
+  position: relative;
+  isolation: isolate;
+  background-color: #edf7f8;
+  background-image:
+    linear-gradient(
+      90deg,
+      #edf7f8 0%,
+      rgba(237, 247, 248, 0.98) 28%,
+      rgba(237, 247, 248, 0.88) 43%,
+      rgba(237, 247, 248, 0.35) 62%,
+      rgba(237, 247, 248, 0.05) 100%
+    ),
+    url("/medical-scan.png");
+  background-repeat: no-repeat;
+  background-position: center, right center;
+  background-size: cover, auto 100%;
+}
+
+.medi-hero-content {
+  width: 58%;
+  max-width: 680px;
+  position: relative;
+  z-index: 1;
 }
 
 .medi-eyebrow {
-  color: #8ce4ff;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
-.medi-hero h1 {
-  margin: 24px 0;
-  color: #ffffff;
-  font-size: clamp(38px, 4.5vw, 64px);
-  line-height: 1.12;
-  letter-spacing: -1.5px;
-}
-
-.medi-hero h1 span {
-  display: block;
-  color: #8be2ff;
-}
-
-.medi-hero-content > p {
-  max-width: 530px;
-  color: #d5e6f6;
-  font-size: 16px;
-  line-height: 1.9;
-}
-
-.medi-hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 30px;
-}
-
-.medi-primary-btn,
-.medi-secondary-btn {
-  min-height: 48px;
-  padding: 14px 20px;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 700;
-  transition: 0.25s ease;
-}
-
-.medi-primary-btn {
-  color: #062540;
-  background: linear-gradient(120deg, #a3ecff, #66caff);
-  box-shadow: 0 8px 25px rgba(54, 184, 255, 0.2);
-}
-
-.medi-primary-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(54, 184, 255, 0.35);
-}
-
-.medi-secondary-btn {
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.medi-trust-note {
-  margin-top: 27px;
-  color: #c4d9eb;
-  font-size: 12px;
-}
-
-/* Glass scan panel */
-.medi-hero-visual {
-  position: relative;
-  padding: 12px;
-}
-
-.medi-image-card {
-  min-height: 390px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 25px;
-  background: rgba(222, 243, 255, 0.12);
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(20px);
-}
-
-.medi-image-label,
-.medi-image-bottom {
-  padding: 20px 23px;
-  display: flex;
-  justify-content: space-between;
-  color: #e4f7ff;
-  font-size: 10px;
+  gap: 9px;
+  margin-bottom: 12px;
+  color: #087f82;
+  font-size: 0.78rem;
+  font-weight: 800;
   letter-spacing: 1.5px;
 }
 
 .medi-status-dot {
   display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 8px;
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
   border-radius: 50%;
-  background: #70f1c9;
-}
-
-.medi-scan-placeholder {
-  min-height: 270px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(
-    ellipse,
-    rgba(69, 180, 233, 0.25),
-    transparent 70%
-  );
-}
-
-.medi-scan-ring {
-  width: 150px;
-  height: 150px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(126, 224, 255, 0.7);
-  border-radius: 50%;
-  box-shadow: 0 0 0 14px rgba(112, 210, 255, 0.06);
-}
-
-.medi-scan-ring span {
-  color: #9beaff;
-  font-size: 70px;
-}
-
-.medi-scan-placeholder p {
-  color: #ffffff;
-  font-weight: 650;
-  margin: 23px 0 5px;
-}
-
-.medi-scan-placeholder small {
-  color: #b9dced;
-  letter-spacing: 3px;
-  font-size: 10px;
-}
-
-.medi-image-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
-}
-
-.medi-floating-chip {
-  position: absolute;
-  right: 0;
-  bottom: 35px;
-  padding: 15px 18px;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 12px;
-  background: rgba(27, 92, 132, 0.8);
-  backdrop-filter: blur(20px);
-  font-size: 12px;
-}
-
-/* Features */
-.medi-features {
-  padding: 75px 7%;
-  background: rgba(4, 18, 39, 0.65);
-  backdrop-filter: blur(10px);
-}
-
-.medi-section-heading {
-  margin-bottom: 35px;
-  text-align: center;
-}
-
-.medi-section-heading > span,
-.medi-about > span {
-  color: #8ce4ff;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
-.medi-section-heading h2,
-.medi-about h2 {
-  color: #ffffff;
-  font-size: clamp(26px, 3vw, 38px);
-}
-
-.medi-feature-grid {
-  width: 100%;
-  max-width: 1100px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-}
-
-.medi-feature-card {
-  padding: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 18px;
-  background: rgba(223, 242, 255, 0.1);
-  backdrop-filter: blur(18px);
-  transition: 0.25s ease;
-}
-
-.medi-feature-card:hover {
-  transform: translateY(-5px);
-  background: rgba(223, 242, 255, 0.16);
-}
-
-.medi-feature-icon {
-  color: #8ce4ff;
-  font-size: 32px;
-}
-
-.medi-feature-card h3 {
-  color: #ffffff;
-  margin: 20px 0 10px;
-}
-
-.medi-feature-card p,
-.medi-about p {
-  color: #d0e2f1;
-  font-size: 14px;
-  line-height: 1.8;
-}
-
-/* About section and footer */
-.medi-about {
-  padding: 75px 20px;
-  text-align: center;
-  background: rgba(7, 32, 58, 0.65);
-}
-
-.medi-about p {
-  max-width: 650px;
-  margin: 0 auto 25px;
-}
-
-.medi-footer {
-  padding: 25px 7%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  background: rgba(3, 15, 32, 0.8);
-}
-
-.medi-footer p {
-  color: #b9cfe1;
-  font-size: 12px;
-}
-
-/* Mobile layout */
-@media (max-width: 800px) {
-  .medi-nav {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .medi-nav-links {
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-
-  .medi-hero {
-    grid-template-columns: 1fr;
-    padding: 55px 0;
-    gap: 30px;
-  }
-
-  .medi-feature-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .medi-footer {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-}
-
-
-
-/* Improve homepage text visibility and readability */
-
-.medi-home {
-  color: #ffffff;
-}
-
-.medi-home p,
-.medi-home small,
-.medi-home span,
-.medi-home h1,
-.medi-home h2,
-.medi-home h3,
-.medi-home a {
-  opacity: 1;
-}
-
-.medi-eyebrow {
-  font-size: 16px;
-  font-weight: 700;
-  color: #ffffff;
+  background: #14b8a6;
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.12);
 }
 
 .medi-hero-content h1 {
-  font-size: clamp(38px, 5vw, 64px);
-  line-height: 1.2;
-  color: #ffffff;
+  color: #123047;
+  font-size: clamp(2.7rem, 5vw, 4.7rem);
+  line-height: 1.08;
+  letter-spacing: -2px;
+  margin: 20px 0;
+  font-weight: 800;
+}
+
+.medi-hero-content h1 span {
+  color: #087f82;
 }
 
 .medi-hero-content p {
-  font-size: 19px;
-  line-height: 1.8;
-  color: #ffffff;
-  max-width: 650px;
+  max-width: 570px;
+  color: #526a7b;
+  font-size: 1.08rem;
+  line-height: 1.85;
+  margin: 0 0 30px;
 }
 
-.medi-nav-links a {
-  font-size: 16px;
-  font-weight: 600;
+.medi-hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.medi-hero-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-radius: 9px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.medi-primary-button {
+  background: #087f82;
+  color: #ffffff;
+  border: 1px solid #087f82;
+}
+
+.medi-primary-button:hover {
+  background: #066568;
+  transform: translateY(-2px);
+}
+
+.medi-secondary-button {
+  background: rgba(255, 255, 255, 0.75);
+  color: #087f82;
+  border: 1px solid #b9ddd3;
+}
+
+.medi-secondary-button:hover {
+  background: #d9f3e9;
+  transform: translateY(-2px);
 }
 
 .medi-trust-note {
-  font-size: 16px;
-  color: #ffffff;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 25px;
+  color: #60777b;
+  font-size: 0.85rem;
 }
 
-.medi-image-label,
-.medi-image-bottom {
-  font-size: 15px;
-  color: #ffffff;
-  font-weight: 600;
+.medi-trust-check {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #d9f3e9;
+  color: #087f82;
+  font-weight: 800;
 }
 
-.medi-scan-placeholder p {
-  font-size: 20px;
-  color: #ffffff;
+.medi-trust-separator {
+  color: #087f82;
 }
 
-.medi-scan-placeholder small {
-  font-size: 16px;
-  color: #ffffff;
+/* The scan is used as a hero background, not a separate card */
+.medi-hero-visual {
+  display: none;
 }
 
-.medi-section-heading > span,
-.medi-about > span {
-  font-size: 16px;
-  color: #ffffff;
+.medi-scan-card,
+.medi-scan-top,
+.medi-scan-image-wrap,
+.medi-scan-image-shade,
+.medi-scan-footer {
+  display: none;
+}
+
+/* About and results sections */
+.medi-about,
+.medi-results-info {
+  padding: 80px 9%;
+  background: #f4fbf8;
+  color: #173c43;
+}
+
+.medi-how {
+  padding: 80px 9%;
+  background: #e5f5ef;
+  color: #173c43;
+}
+
+.medi-section-heading {
+  max-width: 760px;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+
+.medi-section-heading h2 {
+  margin: 0 0 16px;
+  color: #123b43;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  letter-spacing: -1px;
+}
+
+.medi-section-heading p {
+  margin: 0 auto;
+  color: #60777b;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.medi-feature-grid,
+.medi-result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.medi-feature-card,
+.medi-result-card {
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid #d8ebe4;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(25, 83, 72, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.medi-feature-card:hover,
+.medi-result-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(25, 83, 72, 0.1);
+}
+
+.medi-feature-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 22px;
+  border-radius: 12px;
+  background: #d9f3e9;
+  color: #087f82;
+  font-weight: 800;
 }
 
 .medi-feature-card h3,
-.medi-about h2,
-.medi-section-heading h2 {
-  color: #ffffff;
+.medi-step h3,
+.medi-result-card h3 {
+  margin: 0 0 12px;
+  color: #12615e;
+  font-size: 1.15rem;
 }
 
 .medi-feature-card p,
-.medi-about p,
-.medi-footer p {
-  font-size: 17px;
+.medi-step p,
+.medi-result-card p {
+  margin: 0;
+  color: #60777b;
+  font-size: 0.95rem;
   line-height: 1.8;
-  color: #ffffff;
 }
 
-.medi-hero-content,
-.medi-hero-visual,
-.medi-feature-card,
-.medi-about,
+/* How it works */
+.medi-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  max-width: 1150px;
+  margin: 0 auto 50px;
+}
+
+.medi-step {
+  padding: 8px 4px;
+}
+
+.medi-step-number {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #087f82;
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+
+/* Call to action */
+.medi-cta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 30px;
+  border: 1px solid #c6e6da;
+  border-radius: 16px;
+  background: #f7fffb;
+}
+
+.medi-cta h3 {
+  margin: 0 0 8px;
+  color: #123b43;
+  font-size: 1.35rem;
+}
+
+.medi-cta p {
+  margin: 0;
+  color: #60777b;
+  line-height: 1.7;
+}
+
+.medi-cta-button {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 20px;
+  border-radius: 9px;
+  background: #087f82;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background 0.2s ease;
+}
+
+.medi-cta-button:hover {
+  background: #066568;
+}
+
+.medi-disclaimer {
+  max-width: 1150px;
+  margin: 32px auto 0;
+  padding: 18px 22px;
+  border-left: 4px solid #70bca8;
+  border-radius: 6px;
+  background: #e8f5ef;
+  color: #526c69;
+  font-size: 0.88rem;
+  line-height: 1.8;
+}
+
+.medi-disclaimer strong {
+  color: #175a55;
+}
+
+/* Upload, analyze and review strip */
+.medi-info-strip {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  padding: 28px 7%;
+  background: #dcefe9;
+  border-top: 1px solid #c8e3da;
+  border-bottom: 1px solid #c8e3da;
+}
+
+.medi-info-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 24px;
+  border-right: 1px solid #c5ded6;
+}
+
+.medi-info-item:last-child {
+  border-right: none;
+}
+
+.medi-info-number {
+  color: #087f82;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.medi-step-icon {
+  color: #087f82;
+  font-size: 1.5rem;
+}
+
+.medi-info-item strong {
+  color: #174c4b;
+}
+
+.medi-info-item p {
+  margin: 6px 0 0;
+  color: #60777b;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+
+/* Footer */
 .medi-footer {
-  position: relative;
-  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 22px 7%;
+  width: 100%;
+  box-sizing: border-box;
+  color: #526c69;
+  background: #acd6c5;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* Responsive layout */
+@media (max-width: 850px) {
+  .medi-hero {
+    padding: 60px 7%;
+    background-position: center, right center;
+    background-size: cover, auto 85%;
+  }
+
+  .medi-hero-content {
+    width: 70%;
+  }
+
+  .medi-feature-grid,
+  .medi-result-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .medi-steps {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .medi-nav {
+    padding: 14px 5%;
+    flex-wrap: wrap;
+  }
+
+  .medi-nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 22px;
+  }
+
+  .medi-hero {
+    min-height: 540px;
+    padding: 48px 6%;
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(237, 247, 248, 0.97),
+        rgba(237, 247, 248, 0.83)
+      ),
+      url("/medical-scan.png");
+    background-position: center, right center;
+    background-size: cover, auto 70%;
+  }
+
+  .medi-hero-content {
+    width: 100%;
+  }
+
+  .medi-hero-content h1 {
+    font-size: clamp(2.4rem, 10vw, 3.5rem);
+    letter-spacing: -1px;
+  }
+
+  .medi-hero-content p {
+    font-size: 1rem;
+  }
+
+  .medi-hero-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .medi-hero-actions a {
+    width: fit-content;
+  }
+
+  .medi-about,
+  .medi-how,
+  .medi-results-info {
+    padding: 55px 6%;
+  }
+
+  .medi-feature-grid,
+  .medi-result-grid,
+  .medi-steps {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .medi-cta {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 24px;
+  }
+
+  .medi-info-strip {
+    flex-direction: column;
+    padding: 18px 7%;
+  }
+
+  .medi-info-item {
+    border-right: none;
+    border-bottom: 1px solid #c5ded6;
+    padding: 18px 4px;
+  }
+
+  .medi-info-item:last-child {
+    border-bottom: none;
+  }
+
+  .medi-footer {
+    flex-direction: column;
+    text-align: center;
+  }
 }

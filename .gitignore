@@ -16,3 +16,15 @@ backend/static/detections/
 # Local databases
 *.db
 *.sqlite3
+# Python cache
+.venv/
+*.pyc
+.pytest_cache/
+
+# Environment and secrets
+!.env.example
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/

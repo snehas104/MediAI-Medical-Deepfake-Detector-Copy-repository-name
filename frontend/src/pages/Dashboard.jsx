@@ -37,6 +37,10 @@ return ( <div className="medi-dashboard"> <aside className="medi-sidebar"> <Link
         <span className="medi-side-arrow">↗</span>
       </Link>
     </nav>
+    <Link to="/history" className="medi-side-link">
+  <span className="medi-side-icon">◷</span>
+  Scan History
+</Link>
 
     <div className="medi-sidebar-bottom">
       <div className="medi-help-card">

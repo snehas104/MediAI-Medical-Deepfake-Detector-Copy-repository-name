@@ -386,7 +386,7 @@ select:focus-visible {
   height: 100%;
   object-fit: contain;
   object-position: center;
-  filter: grayscale(100%);
+  filter: none;
   background: #101719;
 }
 
@@ -2411,4 +2411,20 @@ padding: 4px;
     padding: 18px;
     gap: 7px;
   }
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
