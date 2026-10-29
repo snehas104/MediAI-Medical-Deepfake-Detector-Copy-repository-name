@@ -1,110 +1,87 @@
-"""
-yolo_service.py
-Integration module for Member 3 (FastAPI / Chatbot Backend).
-"""
 
 import os
+import uuid
 import cv2
-import numpy as np
+from pathlib import Path
 from ultralytics import YOLO
 
 
-class MedicalYOLOService:
+BASE_DIR = Path(__file__).resolve().parent
+DEFAULT_MODEL_PATH = BASE_DIR.parent / "models" / "best.pt"
+DEFAULT_OUTPUT_DIR = BASE_DIR / "static" / "detections"
 
-    def __init__(self, weights_path="../models/best.pt"):
-        if not os.path.exists(weights_path):
+
+class MedicalYOLOService:
+    def __init__(self, weights_path=None):
+        self.weights_path = Path(
+            weights_path or DEFAULT_MODEL_PATH
+        ).resolve()
+
+        if not self.weights_path.is_file():
             raise FileNotFoundError(
-                f"Model weights not found at: {weights_path}"
+                f"YOLO model not found: {self.weights_path}"
             )
 
-        self.model = YOLO(weights_path)
+        self.model = YOLO(str(self.weights_path))
+        print(f"[YOLO] Model loaded: {self.weights_path}")
+        print(f"[YOLO] Classes: {self.model.names}")
 
     def analyze_scan(
         self,
         image_path,
-        conf_threshold=0.15,
-        save_annotated_dir="static/detections"
+        conf_threshold=0.25,
+        save_annotated_dir=None,
     ):
-        """
-        Analyzes an uploaded medical scan for deepfake tampering.
-        """
-
-        img = cv2.imread(image_path)
+        image_path = Path(image_path).resolve()
+        img = cv2.imread(str(image_path))
 
         if img is None:
-            raise ValueError(
-                f"Unable to load image from {image_path}"
-            )
+            raise ValueError(f"Cannot read image: {image_path}")
 
         results = self.model.predict(
             source=img,
             conf=conf_threshold,
-            verbose=True
+            iou=0.45,
+            imgsz=640,
+            max_det=20,
+            verbose=False,
         )[0]
 
-        print("YOLO detections:", len(results.boxes))
+        output_dir = Path(
+            save_annotated_dir or DEFAULT_OUTPUT_DIR
+        ).resolve()
+        output_dir.mkdir(parents=True, exist_ok=True)
 
-        for box in results.boxes:
-            print("Confidence:", float(box.conf[0]))
+        # Unique output name prevents concurrent uploads overwriting files.
+        output_name = f"detected_{uuid.uuid4().hex}.jpg"
+        output_path = output_dir / output_name
 
-        os.makedirs(save_annotated_dir, exist_ok=True)
+        annotated = results.plot()
 
-        annotated_img = img.copy()
+        if not cv2.imwrite(str(output_path), annotated):
+            raise RuntimeError("Failed to save annotated image.")
+
         detections = []
 
         for box in results.boxes:
-
-            coords = box.xyxy[0].tolist()
-            conf = float(box.conf[0])
-
-            x1, y1, x2, y2 = map(int, coords)
-
-            cv2.rectangle(
-                annotated_img,
-                (x1, y1),
-                (x2, y2),
-                (0, 0, 255),
-                2
-            )
-
-            label = f"Tampered: {conf * 100:.1f}%"
-
-            cv2.putText(
-                annotated_img,
-                label,
-                (x1, max(18, y1 - 6)),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.48,
-                (0, 0, 255),
-                2
-            )
+            class_id = int(box.cls.item())
+            confidence = float(box.conf.item())
 
             detections.append({
-                "bounding_box": [x1, y1, x2, y2],
-                "confidence": round(conf * 100, 2),
-                "classification": "tampered_tumor_region"
+                "class_id": class_id,
+                "classification": self.model.names[class_id],
+                "confidence": round(confidence * 100, 2),
+                "bounding_box": [
+                    round(float(v), 2)
+                    for v in box.xyxy[0].tolist()
+                ],
             })
-
-        filename = os.path.basename(image_path)
-
-        annotated_path = os.path.join(
-            save_annotated_dir,
-            f"detected_{filename}"
-        )
-
-        cv2.imwrite(annotated_path, annotated_img)
 
         return {
             "tampering_detected": len(detections) > 0,
             "region_count": len(detections),
             "suspicious_regions": detections,
-            "annotated_image_url":
-                f"/static/detections/detected_{filename}"
+            "annotated_image_url": (
+                f"/static/detections/{output_name}"
+            ),
         }
-
-
-if __name__ == "__main__":
-
-    if os.path.exists("best.pt"):
-        detector = MedicalYOLOService("best.pt")
-        print("[+] YOLO Service initialized successfully!")

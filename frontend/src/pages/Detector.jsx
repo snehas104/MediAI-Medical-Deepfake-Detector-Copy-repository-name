@@ -82,13 +82,15 @@ export default function Detector() {
         );
       }
 
-     navigate("/results", {
-  state: {
-    result: data.result,
-    cnn_result: data.cnn_result,
-    fileName: file.name,
-  },
-});
+           navigate("/results", {
+        state: {
+          result: data.result,
+          cnn_result: data.cnn_result,
+          final_verdict: data.final_verdict,
+          verdict_source: data.verdict_source,
+          fileName: file.name,
+        },
+      });
     } catch (err) {
       setError(
         err.message ||

@@ -1,6 +1,7 @@
 
 import { Link, useLocation } from "react-router-dom";
 import "./Results.css";
+import "../App.css";
 
 export default function Results() {
   const location = useLocation();
@@ -8,6 +9,8 @@ export default function Results() {
   const result = location.state?.result;
   const cnnResult = location.state?.cnn_result;
   const fileName = location.state?.fileName || "Medical image";
+  const finalVerdict = location.state?.final_verdict;
+  const verdictSource = location.state?.verdict_source;
 
   if (!result) {
     return (
@@ -52,6 +55,9 @@ export default function Results() {
   const regions = Array.isArray(result.suspicious_regions)
     ? result.suspicious_regions
     : [];
+    const heatmapUrl = cnnResult?.heatmap_url
+    ? `http://127.0.0.1:8001${cnnResult.heatmap_url}`
+    : null;
 
   return (
     <div className="app">
@@ -81,6 +87,14 @@ export default function Results() {
 
           <h1>Analysis Results</h1>
           <p className="result-filename">File: {fileName}</p>
+
+                    <div className="regions">
+            <h2>Final Verdict</h2>
+            <div className="result-box">
+              <h3>{verdictSource ? `Based on: ${verdictSource}` : "Result"}</h3>
+              <p>{(finalVerdict ?? "Not provided").toUpperCase()}</p>
+            </div>
+          </div>
 
           {/* Member 1: CNN classification */}
           <div className="regions">
@@ -182,6 +196,30 @@ export default function Results() {
                 alt="YOLO detection result with marked regions"
                 className="result-image"
               />
+            </div>
+          )}
+
+                    {result.low_confidence_pass && (
+            <p className="dashboard-note">
+              The boxes above come from a low-confidence second pass of the
+              detector.
+            </p>
+          )}
+
+          {!annotatedImageUrl && null}
+
+          {heatmapUrl && (
+            <div className="annotated-section">
+              <h2>CNN Attention Heatmap</h2>
+              <img
+                src={heatmapUrl}
+                alt="Grad-CAM heatmap showing where the classifier focused"
+                className="result-image"
+              />
+              <p className="dashboard-note">
+                Red and yellow areas show where the classifier focused. This
+                shows model attention, not confirmed tampering.
+              </p>
             </div>
           )}
 
